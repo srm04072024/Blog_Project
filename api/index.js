@@ -1,17 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import "dotenv/config";
 const app = express();
 const path = 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
-
+// console.log(process.env.MONGO_URL);
 mongoose
-  .connect(
-    "mongodb+srv://srm2032018:blog2024@blog-2024.8n59t.mongodb.net/?retryWrites=true&w=majority&appName=Blog-2024"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("Connected to MongoDB");
   })
