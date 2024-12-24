@@ -1,11 +1,12 @@
 // import React from "react";
 import { useState } from "react";
-import { Alert, Button, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
+import { Link, useNavigate } from "react-router-dom";
 function SignUP() {
   const [FormData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...FormData, [e.target.id]: e.target.value.trim() });
   };
@@ -15,6 +16,8 @@ function SignUP() {
       setErrorMessage("Please fill all the fields");
     }
     try {
+      setLoading(true);
+      setErrorMessage(null);
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -26,7 +29,10 @@ function SignUP() {
       if (data.success === false) {
         return setErrorMessage(data.message);
       }
+      setLoading(false);
+      navigate("/sign-in");
     } catch (error) {
+      setLoading(false);
       setErrorMessage(error.message);
     }
   };
@@ -52,7 +58,7 @@ function SignUP() {
         </p>
       </div>
       {/* Right */}
-      <div className="">
+      <div>
         <form
           className=" flex flex-col gap-4 sm:w-3/4 mx-auto"
           onSubmit={handleSubmit}
@@ -89,8 +95,16 @@ function SignUP() {
             gradientDuoTone="purpleToBlue"
             className="rounded-lg mt-4"
             type="submit"
+            disabled={loading}
           >
-            Sign UP
+            {loading ? (
+              <>
+                <Spinner size="sm" />
+                <span className=" pl-4">Loading...</span>
+              </>
+            ) : (
+              "Sign Up"
+            )}
           </Button>
         </form>
         <div className="w-full text-center mt-4">
