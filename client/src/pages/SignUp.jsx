@@ -1,7 +1,27 @@
 // import React from "react";
+import { useState } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 function SignUP() {
+  const [FormData, setFormData] = useState({});
+  const handleChange = (e) => {
+    setFormData({ ...FormData, [e.target.id]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(FormData),
+      });
+      const data = res.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className=" min-h-screen grid grid-cols-1 md:grid-cols-2 items-center p-10 gap-6 md:gap-0">
       {/* Left */}
@@ -13,9 +33,9 @@ function SignUP() {
           <span className=" px-2 py-1 bg-gradient-to-r from-amber-500 via-amber-500 to-lime-500 rounded-lg text-white">
             User's
           </span>
-          <text className=" bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-500 to-lime-500">
+          <span className=" bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-500 to-lime-500">
             Blog
-          </text>
+          </span>
         </Link>
         <p className="mt-6 text-justify">
           Welcome to [Your Blog Name], where each story begins with a single
@@ -25,18 +45,27 @@ function SignUP() {
       </div>
       {/* Right */}
       <div className="">
-        <form className=" flex flex-col gap-4 sm:w-3/4 mx-auto">
+        <form
+          className=" flex flex-col gap-4 sm:w-3/4 mx-auto"
+          onSubmit={handleSubmit}
+        >
           <div>
             <Label value="Username:-" />
             <TextInput
               type="text"
               placeholder="Enter your username"
               id="username"
+              onChange={handleChange}
             />
           </div>
           <div>
             <Label value="Email:-" />
-            <TextInput type="email" placeholder="Enter your email" id="email" />
+            <TextInput
+              type="email"
+              placeholder="Enter your email"
+              id="email"
+              onChange={handleChange}
+            />
           </div>
           <div>
             <Label value="Password:-" />
@@ -44,6 +73,7 @@ function SignUP() {
               type="password"
               placeholder="Enter your password"
               id="password"
+              onChange={handleChange}
             />
           </div>
 
@@ -56,7 +86,7 @@ function SignUP() {
           </Button>
         </form>
         <div className="w-full text-center mt-4">
-          <spam>Have an account?</spam>
+          <span>Have an account?</span>
           <Link to="/sign-in" className="text-blue-500">
             Sign In
           </Link>
