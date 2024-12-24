@@ -1,14 +1,19 @@
 // import React from "react";
 import { useState } from "react";
-import { Button, Label, TextInput } from "flowbite-react";
+import { Alert, Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 function SignUP() {
   const [FormData, setFormData] = useState({});
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
-    setFormData({ ...FormData, [e.target.id]: e.target.value });
+    setFormData({ ...FormData, [e.target.id]: e.target.value.trim() });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!FormData.username || !FormData.email || !FormData.password) {
+      setErrorMessage("Please fill all the fields");
+    }
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -18,8 +23,11 @@ function SignUP() {
         body: JSON.stringify(FormData),
       });
       const data = res.json();
-    } catch (err) {
-      console.log(err);
+      if (data.success === false) {
+        return setErrorMessage(data.message);
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
   return (
@@ -91,6 +99,11 @@ function SignUP() {
             Sign In
           </Link>
         </div>
+        {errorMessage && (
+          <Alert type="error" className="mt-4 sm:w-3/4 mx-auto" color="failure">
+            {errorMessage}
+          </Alert>
+        )}
       </div>
     </div>
   );
