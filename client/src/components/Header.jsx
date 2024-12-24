@@ -14,7 +14,9 @@ function Header() {
         <span className=" px-2 py-1 bg-gradient-to-r from-amber-500 via-amber-500 to-lime-500 rounded-lg text-white">
           User's
         </span>
-        Blog
+        <text className=" bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-500 to-lime-500">
+          Blog
+        </text>
       </Link>
       <form>
         <TextInput
