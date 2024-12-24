@@ -12,8 +12,15 @@ function SignUP() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!FormData.username || !FormData.email || !FormData.password) {
-      setErrorMessage("Please fill all the fields");
+    if (
+      !FormData.username ||
+      !FormData.email ||
+      !FormData.password ||
+      FormData.username === "" ||
+      FormData.email === "" ||
+      FormData.password === ""
+    ) {
+      return setErrorMessage("Please fill all the fields");
     }
     try {
       setLoading(true);
@@ -30,12 +37,16 @@ function SignUP() {
         return setErrorMessage(data.message);
       }
       setLoading(false);
-      navigate("/sign-in");
+      if (res.ok) {
+        navigate("/sign-in");
+      }
     } catch (error) {
-      setLoading(false);
       setErrorMessage(error.message);
+      setLoading(false);
     }
   };
+
+  console.log(errorMessage);
   return (
     <div className=" min-h-screen grid grid-cols-1 md:grid-cols-2 items-center p-10 gap-6 md:gap-0">
       {/* Left */}
@@ -109,7 +120,7 @@ function SignUP() {
         </form>
         <div className="w-full text-center mt-4">
           <span className=" text-white">Have an account?</span>
-          <Link to="/sign-in" className="text-blue-500">
+          <Link to="/sign-in" className="text-blue-500 pl-2">
             Sign In
           </Link>
         </div>
