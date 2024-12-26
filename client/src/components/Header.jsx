@@ -41,17 +41,17 @@ function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link active={path === "/"}>
+        <Navbar.Link active={path === "/"} as={"div"}>
           <Link to="/" className=" text-lg">
             Home
           </Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/about"}>
+        <Navbar.Link active={path === "/about"} as={"div"}>
           <Link to="/about" className=" text-lg">
             About
           </Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/projects"}>
+        <Navbar.Link active={path === "/projects"} as={"div"}>
           <Link to="/projects" className=" text-lg">
             Projects
           </Link>
