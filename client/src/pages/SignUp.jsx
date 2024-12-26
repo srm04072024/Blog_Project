@@ -63,7 +63,7 @@ function SignUP() {
             Blog
           </span>
         </Link>
-        <p className="mt-6 text-justify text-gray-50">
+        <p className="mt-6 text-justify">
           Welcome to [Your Blog Name], where each story begins with a single
           step. Here, you'll explore my personal experiences and insights. Join
           me in this journey and let’s create something extraordinary together
@@ -76,7 +76,7 @@ function SignUP() {
           onSubmit={handleSubmit}
         >
           <div>
-            <Label value="Username:-" className=" text-white" />
+            <Label value="Username:-" />
             <TextInput
               type="text"
               placeholder="Enter your username"
@@ -85,7 +85,7 @@ function SignUP() {
             />
           </div>
           <div>
-            <Label value="Email:-" className=" text-white" />
+            <Label value="Email:-" />
             <TextInput
               type="email"
               placeholder="Enter your email"
@@ -94,7 +94,7 @@ function SignUP() {
             />
           </div>
           <div>
-            <Label value="Password:-" className=" text-white" />
+            <Label value="Password:-" />
             <TextInput
               type="password"
               placeholder="Enter your password"
@@ -121,7 +121,7 @@ function SignUP() {
           <OAuth />
         </form>
         <div className="w-full text-center mt-4">
-          <span className=" text-white">Have an account?</span>
+          <span>Have an account?</span>
           <Link to="/sign-in" className="text-blue-500 pl-2">
             Sign In
           </Link>

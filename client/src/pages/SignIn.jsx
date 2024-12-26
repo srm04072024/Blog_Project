@@ -73,7 +73,7 @@ function SignIn() {
             Blog
           </span>
         </Link>
-        <p className="mt-6 text-justify text-gray-50">
+        <p className="mt-6 text-justify">
           Welcome to [Your Blog Name], where each story begins with a single
           step. Here, you'll explore my personal experiences and insights. Enter
           Your Email and Password to Sign In.
@@ -86,7 +86,7 @@ function SignIn() {
           onSubmit={handleSubmit}
         >
           <div>
-            <Label value="Email:-" className=" text-white" />
+            <Label value="Email:-" />
             <TextInput
               type="email"
               placeholder="Enter your email"
@@ -95,7 +95,7 @@ function SignIn() {
             />
           </div>
           <div>
-            <Label value="Password:-" className=" text-white" />
+            <Label value="Password:-" />
             <TextInput
               type="password"
               placeholder="*********************"
@@ -122,7 +122,7 @@ function SignIn() {
           <OAuth />
         </form>
         <div className="w-full text-center mt-4">
-          <span className=" text-white">Don't have an account?</span>
+          <span>Don't have an account?</span>
           <Link to="/sign-up" className="text-blue-500 pl-2">
             Sign Up
           </Link>

@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 function FooterComponent() {
   return (
-    <Footer className=" border border-t-8 border-sky-400 p-5 bg-[#2a4076] flex flex-col items-center sm:py-9">
+    <Footer className=" border border-t-8 border-sky-400 p-5  flex flex-col items-center sm:py-9 dark:border-[#374151]">
       <div className="w-full sm:w-5/6 mx-auto grid grid-cols-1 sm:grid-cols-2 ">
         <div className="sm:flex sm:items-center">
           <Link
@@ -26,8 +26,11 @@ function FooterComponent() {
         </div>
         <div className=" w-full mt-5 sm:mt-0 flex justify-between sm:justify-evenly  ">
           <div>
-            <Footer.Title title="About Us" className=" text-white" />
-            <Footer.LinkGroup col className=" text-slate-300">
+            <Footer.Title
+              title="About Us"
+              className=" text-gray-700 dark:text-gray-50"
+            />
+            <Footer.LinkGroup col className=" text-slate-500">
               <Footer.Link
                 href="/about"
                 target="_blank"
@@ -45,8 +48,11 @@ function FooterComponent() {
             </Footer.LinkGroup>
           </div>
           <div>
-            <Footer.Title title="Follow US" className=" text-white" />
-            <Footer.LinkGroup col className=" text-slate-300">
+            <Footer.Title
+              title="Follow US"
+              className=" text-gray-700 dark:text-gray-50"
+            />
+            <Footer.LinkGroup col className=" text-slate-500">
               <Footer.Link
                 href="/about"
                 target="_blank"
@@ -60,8 +66,11 @@ function FooterComponent() {
             </Footer.LinkGroup>
           </div>
           <div>
-            <Footer.Title title="Legal" className=" text-white" />
-            <Footer.LinkGroup col className=" text-slate-300">
+            <Footer.Title
+              title="Legal"
+              className=" text-gray-700 dark:text-gray-50"
+            />
+            <Footer.LinkGroup col className=" text-slate-500">
               <Footer.Link href="#">Privacy Policy</Footer.Link>
               <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
             </Footer.LinkGroup>
