@@ -16,10 +16,10 @@ function Dashboard() {
   // console.log(tab);
   return (
     <div className=" min-h-screen flex flex-col md:flex-row">
-      <div className="md:w-56">
+      <div className="md:w-1/4">
         <DashSideBar />
       </div>
-      <div>{tab === "profile" && <DashProfile />}</div>
+      <div className="md:w-3/4">{tab === "profile" && <DashProfile />}</div>
     </div>
   );
 }

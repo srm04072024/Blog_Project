@@ -15,7 +15,7 @@ function DashSideBar() {
     }
   }, [location.search]);
   return (
-    <Sidebar className=" w-full md:w-56">
+    <Sidebar className="w-full">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Link to="/dashboard?tab=profile">
