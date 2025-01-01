@@ -34,7 +34,7 @@ function DashProfile() {
 
   const uploadImage = async () => {
     setImageFileUploading(true);
-
+    setImageFileUploadError(null);
     const formData = new FormData();
     formData.append("file", imageFile);
     formData.append("upload_preset", "trial_upload"); // Use your upload preset here
@@ -136,7 +136,14 @@ function DashProfile() {
           placeholder="password"
           defaultValue="password"
         />
-        <Button type="submit" gradientDuoTone="cyanToBlue" outline></Button>
+        <Button
+          type="submit"
+          gradientDuoTone="cyanToBlue"
+          outline
+          disabled={imageFileUploading}
+        >
+          Update
+        </Button>
       </form>
       <div className="text-red-500 flex justify-between mt-4">
         <span className="cursor-pointer">Delete Account</span>
